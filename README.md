@@ -1,6 +1,3 @@
-# Create a README.md file for the static GitHub landing page
-
-readme_content = """
 # Diostronics Static Landing Page
 
 A fully responsive, dark-themed **static landing page** inspired by a WordPress "Archi" child theme — restructured using plain HTML/CSS for GitHub Pages deployment.
