@@ -1,0 +1,21 @@
+# Ignore all Python files
+*.py
+
+# Ignore README and license files
+README.md
+LICENSE
+LICENSE.txt
+
+# Node & Python junk (optional)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Mac system files
+.DS_Store
+
+# Backup/Editor temp files
+*~
+*.swp
+*.bak
