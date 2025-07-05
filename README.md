@@ -24,7 +24,11 @@ Deploy this page via GitHub Pages or open `index.html` directly in your browser.
 
 .
 ├── index.html # Main landing page
+
 ├── style.css # Custom styles (optional if not inline)
+
 ├── images/ # Logos, background, favicon
+
 ├── 403.html # Optional error/fallback page
+
 └── README.md # This file
