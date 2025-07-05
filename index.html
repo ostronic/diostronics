@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,105 +10,100 @@
         * {
           box-sizing: border-box;
         }
-        html, body {
-            margin: 0;
-            padding: 0;
-            height:100%;
-            font-family: sans-serif;
-            background-color: #000;
-            display: flex;
-            flex-direction: column;
-        }
 
-        main {
-          flex: 1 0 auto;
+        html, body {
+          margin: 0;
+          padding: 0;
+          height:100%;
+          font-family: sans-serif;
+          background-color: #000;
           display: flex;
           flex-direction: column;
         }
 
-        .background {
-            background: url('images/subheader-1.png') no-repeat center center fixed;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
+        main {
+          flex: 1 0 auto;
         }
 
-        .background, .what-we-do {
-          flex-shrink: 0;
+        .background {
+          background: url('images/subheader-1.png') no-repeat center center fixed;
+          background-size: cover;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          color: white;
         }
 
         .logo {
-            max-width: 200px;
-            margin-bottom: 10px;
+          max-width: 200px;
+          margin-bottom: 10px;
         }
 
         .cta h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
+          font-size: 2em;
+          margin-bottom: 20px;
         }
 
         .cta a {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #fff;
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: background 0.3s;
+          display: inline-block;
+          padding: 12px 30px;
+          background-color: #fff;
+          color: #000;
+          text-decoration: none;
+          font-weight: bold;
+          border-radius: 4px;
+          transition: background 0.3s;
         }
 
         .cta a:hover {
-            background-color: #ddd;
+          background-color: #ddd;
         }
 
         .what-we-do {
-            background-color: #111;
-            color: #eee;
-            padding: 60px 20px;
-            text-align: center;
+          background-color: #111;
+          color: #eee;
+          padding: 60px 20px;
+          text-align: center;
         }
 
         .what-we-do h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
+          font-size: 2.5em;
+          margin-bottom: 40px;
         }
 
         .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 30px;
         }
 
         .service-box {
-            background-color: #1b1b1b;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 300px;
-            flex: 1 1 300px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+          background-color: #1b1b1b;
+          padding: 20px;
+          border-radius: 8px;
+          max-width: 300px;
+          flex: 1 1 300px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
 
         .service-box h3 {
-            font-size: 1.2em;
-            color: #fff;
-            margin-bottom: 10px;
+          font-size: 1.2em;
+          color: #fff;
+          margin-bottom: 10px;
         }
 
         .service-box .highlight {
-            color: #f5c518; /* Yellow accent */
+          color: #f5c518; /* Yellow accent */
         }
 
         .service-box p {
-            color: #ccc;
-            font-size: 0.95em;
-            line-height: 1.6;
+          color: #ccc;
+          font-size: 0.95em;
+          line-height: 1.6;
         }
 
         footer {
@@ -137,46 +131,44 @@
 <body>
   <main>
     <div class="background">
-        <header>
-          <img src="images/logo.png" alt="Logo" class="logo">
-          <h2> Welcome to Diostronics</h2>
-        </header>
-        <div class="cta">
-            <h1>Expert in technology and professional services, offering top-tier website and graphics design, web management, e-commerce solutions, SEO, and business email services.</h1>
-            <a href="https://www.surveymonkey.com/r/ZK7QBKP" id="survey-button" alt="403.html" target="_blank" rel="noopener noreferrer">Get in Touch</a>
-            <script>
-              (function(t,e,s,o){
-                var n,a,c;
-                t.SMCX=t.SMCX||[],
-                e.getElementById(o)||(n=e.getElementsByTagName(s),
-                a=n[n.length-1],
-                c=e.createElement(s),
-                c.type="text/javascript",
-                c.async=!0,
-                c.id=o,
-                c.src="https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd4s_2B939eKTW1a_2Fbw_2Bu9_2F78GDHwhxI4HW8BJkSO2BJZI7.js",
-                a.parentNode.insertBefore(c,a))
-              })(window,document,"script","smcx-sdk");
-            </script>
-        </div>
-        <section class="what-we-do">
-          <h2>What We Do</h2>
-          <div class="services">
-            <div class="service-box">
-              <h3><span class="highlight">WEBSITE</span> DESIGN</h3>
-              <p>Transform your online presence with a beautifully designed website that reflects your brand and attracts your target audience. We are Tech expert specializing in website and graphic design, e-commerce, SEO, web management, and business email solutions to elevate online presence.</p>
-            </div>
-            <div class="service-box">
-              <h3><span class="highlight">🛡️  CYBER</span> SECURITY</h3>
-              <p>Specializing in offensive security, we deliver advanced penetration testing, bug bounty hunting, and custom black-box exploitation tools. Whether you're simulating real-world attacks or seeking zero-day insights, we help harden your digital perimeter through ethically engineered threats.</p>
-            </div>
-            <div class="service-box">
-              <h3><span class="highlight">⚙️ PYTHON</span> AUTOMATION</h3>
-              <p>We design powerful Python scripts and tools to automate workflows, monitor systems, scrape web data, and streamline repetitive tasks. From DevOps, system administration to cyber operations, our solutions help eliminate human error and boost productivity with clean, scalable code.</p>
-            </div>
-          </div>
-        </section>
+      <img src="images/logo.png" alt="Logo" class="logo">
+      <div class="cta">
+        <h1>Expert in technology and professional services, offering top-tier website and graphics design, web management, e-commerce solutions, SEO, and business email services.</h1>
+        <a href="https://www.surveymonkey.com/r/ZK7QBKP" id="survey-button" alt="403.html" target="_blank" rel="noopener noreferrer">Get in Touch</a>
+        <script>
+        (function(t,e,s,o){
+          var n,a,c;
+          t.SMCX=t.SMCX||[],
+          e.getElementById(o)||(n=e.getElementsByTagName(s),
+          a=n[n.length-1],
+          c=e.createElement(s),
+          c.type="text/javascript",
+          c.async=!0,
+          c.id=o,
+          c.src="https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd4s_2B939eKTW1a_2Fbw_2Bu9_2F78GDHwhxI4HW8BJkSO2BJZI7.js",
+          a.parentNode.insertBefore(c,a))
+        })(window,document,"script","smcx-sdk");
+        </script>
+      </div>
     </div>
+
+    <section class="what-we-do">
+      <h2>What We Do</h2>
+      <div class="services">
+        <div class="service-box">
+          <h3><span class="highlight">WEBSITE</span> DESIGN</h3>
+          <p>Transform your online presence with a beautifully designed website that reflects your brand and attracts your target audience. We are Tech expert specializing in website and graphic design, e-commerce, SEO, web management, and business email solutions to elevate online presence.</p>
+        </div>
+        <div class="service-box">
+          <h3><span class="highlight">🛡️  CYBER</span> SECURITY</h3>
+          <p>Specializing in offensive security, we deliver advanced penetration testing, bug bounty hunting, and custom black-box exploitation tools. Whether you're simulating real-world attacks or seeking zero-day insights, we help harden your digital perimeter through ethically engineered threats.</p>
+        </div>
+        <div class="service-box">
+          <h3><span class="highlight">⚙️ PYTHON</span> AUTOMATION</h3>
+          <p>We design powerful Python scripts and tools to automate workflows, monitor systems, scrape web data, and streamline repetitive tasks. From DevOps, system administration to cyber operations, our solutions help eliminate human error and boost productivity with clean, scalable code.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
