@@ -22,6 +22,7 @@ Deploy this page via GitHub Pages or open `index.html` directly in your browser.
 
 ## 📁 File Structure
 
+markdown
 ```
 .
 ├── index.html # Main landing page
