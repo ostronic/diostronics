@@ -37,3 +37,7 @@ markdown
 -  ♻ Remote Auto-Update	Enabled
 -  🗂 Uses GitHub Repo File	Yes
 -  👤 User Refresh Button	Added
+
+✔ Proxy list auto-loads every time site opens
+✔ You can update proxies just by editing proxylist.txt in GitHub repo
+✔ Zero backend — 100% GitHub Pages compatible
