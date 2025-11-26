@@ -188,9 +188,7 @@
 <h3><span class="highlight">ELECTRONICS</span> DESIGN</h3>
 <p>We specialize in <strong>custom circuit builds</strong>, <strong>inverter system design</strong>, and <strong>logic gate integration</strong> using both discrete and DIP-packaged ICs. From <strong>Arduino-based automation</strong> to deep repair diagnostics, we deliver efficient hardware solutions for embedded systems, smart controls, and energy systems.</p>
 </div>
-
 </section>
-
 <section id="free-proxy">
   <h2>Free Proxy Feed (Auto-Updated)</h2>
   <p>Real-time HTTP/HTTPS proxy pool</p>
@@ -219,11 +217,11 @@ async function loadProxyList(){
     try {
         let res = await fetch(url);
         let text = await res.text();
-        
+
         document.getElementById("proxy-box").innerHTML =
         "<pre style='background:#111;color:#0f0;padding:15px;border-radius:6px;white-space:pre-wrap'>" +
         text + "</pre>";
-    
+
     } catch(e){
         document.getElementById("proxy-box").innerHTML =
         "<span style='color:red'>Failed to load proxy list.</span>";
