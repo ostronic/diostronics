@@ -33,7 +33,7 @@ markdown
 ```
 
 ##  Feature	Status
-🔥 Live Proxy Feed	Enabled
-♻ Remote Auto-Update	Enabled
-🗂 Uses GitHub Repo File	Yes
-👤 User Refresh Button	Added
+-  🔥 Live Proxy Feed	Enabled
+-  ♻ Remote Auto-Update	Enabled
+-  🗂 Uses GitHub Repo File	Yes
+-  👤 User Refresh Button	Added
