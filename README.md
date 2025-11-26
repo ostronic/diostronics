@@ -29,6 +29,7 @@ markdown
 ├── style.css # Custom styles (optional if not inline)
 ├── images/ # Logos, background, favicon
 ├── 403.html # Optional error/fallback page
+├── proxylist.txt # Proxy list file.
 └── README.md # This file
 ```
 
