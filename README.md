@@ -31,3 +31,9 @@ markdown
 ├── 403.html # Optional error/fallback page
 └── README.md # This file
 ```
+
+##  Feature	Status
+🔥 Live Proxy Feed	Enabled
+♻ Remote Auto-Update	Enabled
+🗂 Uses GitHub Repo File	Yes
+👤 User Refresh Button	Added
