@@ -75,6 +75,15 @@
           margin-bottom: 40px;
         }
 
+        .proxy {
+          background-color: #0f0;
+          text-align: center;
+        }
+
+        .proxy h2, p {
+          color: #eee;
+        }
+
         .services {
           display: flex;
           flex-wrap: wrap;
@@ -189,7 +198,7 @@
 <p>We specialize in <strong>custom circuit builds</strong>, <strong>inverter system design</strong>, and <strong>logic gate integration</strong> using both discrete and DIP-packaged ICs. From <strong>Arduino-based automation</strong> to deep repair diagnostics, we deliver efficient hardware solutions for embedded systems, smart controls, and energy systems.</p>
 </div>
 </section>
-<section id="free-proxy">
+<section class="proxy" id="free-proxy">
   <h2>Free Proxy Feed (Auto-Updated)</h2>
   <p>Real-time HTTP/HTTPS proxy pool</p>
 
@@ -210,19 +219,40 @@
 </div>
 </div>
 </footer>
+<!-- ================= FIXED PROXY FETCH MODULE ================= -->
 <script>
-const PROXY_URL="https://ostronic.github.io/diostronics/proxylist.txt"; // recommended
+/* Direct GitHub Pages endpoint — WORKING URL */
+const PROXY_URL = "https://ostronic.github.io/diostronics/proxylist.txt";
 
+/* Auto-load proxy list */
 async function loadProxy(){
-  try{
-    const text = await fetch(PROXY_URL).then(r=>r.text());
-    document.getElementById("proxy-box").textContent=text;
-  } catch(e){
-    document.getElementById("proxy-box").textContent="Failed to load proxy";
+  const box = document.getElementById("proxy-box");
+  
+  try {
+      const res = await fetch(PROXY_URL);
+      if(!res.ok) throw new Error("Proxy file not reachable");
+      
+      const text = await res.text();
+      
+      /* Success → show proxies */
+      box.style.color = "#0f0";      // neon green output
+      box.style.whiteSpace="pre-wrap";
+      box.textContent = text.trim();
+  
+  } catch(err){
+      /* Error handler */
+      box.style.color = "red";
+      box.textContent = "Failed to load proxy ❌";
   }
 }
-document.getElementById("refresh").onclick=loadProxy;
+
+/* Button refresh support */
+document.getElementById("refresh").onclick = loadProxy;
+
+/* Auto load when page opens */
 loadProxy();
 </script>
+<!-- ============================================================ -->
+
 </body>
 </html>
