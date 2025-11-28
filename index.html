@@ -211,25 +211,18 @@
 </div>
 </footer>
 <script>
-async function loadProxyList(){
-    const url = "https://raw.githubusercontent.com/ostronic/diostronics/gh-pages/proxylist.txt";
+const PROXY_URL="https://ostronic.github.io/diostronics/proxylist.txt"; // recommended
 
-    try {
-        let res = await fetch(url);
-        let text = await res.text();
-
-        document.getElementById("proxy-box").innerHTML =
-        "<pre style='background:#111;color:#0f0;padding:15px;border-radius:6px;white-space:pre-wrap'>" +
-        text + "</pre>";
-
-    } catch(e){
-        document.getElementById("proxy-box").innerHTML =
-        "<span style='color:red'>Failed to load proxy list.</span>";
-    }
+async function loadProxy(){
+  try{
+    const text = await fetch(PROXY_URL).then(r=>r.text());
+    document.getElementById("proxy-box").textContent=text;
+  } catch(e){
+    document.getElementById("proxy-box").textContent="Failed to load proxy";
+  }
 }
-
-document.getElementById("refresh-proxy").onclick = loadProxyList;
-loadProxyList(); // auto-load on page open
+document.getElementById("refresh").onclick=loadProxy;
+loadProxy();
 </script>
 </body>
 </html>
