@@ -29,7 +29,8 @@ markdown
 ├── style.css # Custom styles (optional if not inline)
 ├── images/ # Logos, background, favicon
 ├── 403.html # Optional error/fallback page
-├── proxylist.txt # Proxy list file.
+├── convert_proxy.py # convert proxies from the format http://161.82.141.220:8080 socks4://5.2.200.203:1080 to 161.82.141.220:8080 5.2.200.203:1080
+├── proxylist.txt # http(s)| socks(4|5) Proxy list file.
 └── README.md # This file
 ```
 
