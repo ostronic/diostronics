@@ -4,10 +4,14 @@ import re
 def convert(input_file, output_file):
     with open(input_file, "r") as src, open(output_file, "w") as out:
         for line in src:
-            clean = re.sub(r"http[s]?://", "", line.strip())  # remove http:// or https://
+            # remove http://, https://, socks://, socks4://, socks5://
+            clean = re.sub(r"^(?:https?|socks5?|socks4)://", "", line.strip(), flags=re.IGNORECASE)
+
             clean = clean.rstrip(",")  # remove trailing comma
+
             if clean:
                 out.write(clean + "\n")
+
     print(f"[+] Converted proxies saved to: {output_file}")
 
 if __name__ =='__main__':
