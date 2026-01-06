@@ -1,0 +1,81 @@
+name: Intelligent Proxy Harvest Pipeline
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # Daily 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  proxy-engine:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        branch: [main, gh-pages]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests geoip2
+
+      - name: Harvest raw proxies
+        run: |
+          python3 proxy_harvester_finer_control.py \
+            --sources list.txt \
+            --timeout 3 \
+            --geo \
+            --max-latency 1200 \
+            --output raw_proxies.txt
+
+      - name: Convert to IP:PORT format
+        run: |
+          python3 convert_proxy.py raw_proxies.txt converted.txt
+
+      - name: Validate & clean
+        run: |
+          sed -i '/^$/d' converted.txt
+          sort -u converted.txt > proxylist.txt
+
+          if [ ! -s proxylist.txt ]; then
+            echo "❌ Proxy list empty — aborting commit"
+            exit 1
+          fi
+
+      - name: Generate JSON API output
+        run: |
+          python3 - << 'EOF'
+          import json, time
+          proxies = []
+          for p in open("proxylist.txt"):
+              ip,port = p.strip().split(":")
+              proxies.append({
+                  "proxy": p.strip(),
+                  "latency_ms": None,
+                  "country": None,
+                  "score": 100
+              })
+          json.dump({
+              "updated": time.strftime("%Y-%m-%d %H:%M UTC"),
+              "count": len(proxies),
+              "proxies": proxies
+          }, open("proxylist.json","w"), indent=2)
+          EOF
+
+      - name: Commit & push updates
+        run: |
+          git config user.name "diostronics-bot"
+          git config user.email "actions@github.com"
+          git add proxylist.txt proxylist.json
+          git commit -m "🤖 Intelligent proxy refresh ($(date -u))" || exit 0
+          git push origin ${{ matrix.branch }}
