@@ -1,0 +1,57 @@
+name: Daily Proxy Harvest & Update
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # Runs daily at 02:00 UTC
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  proxy-update:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        branch: [main, gh-pages]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Harvest proxies
+        run: |
+          python3 proxy_harvester_finer_control.py \
+            --sources list.txt \
+            --timeout 3 \
+            --geo \
+            --max-latency 1200 \
+            --output raw_proxies.txt
+
+      - name: Convert proxy format (http/socks → IP:PORT)
+        run: |
+          python3 convert_proxy.py raw_proxies.txt proxylist.txt
+
+      - name: Remove duplicates & sanitize
+        run: |
+          sort -u proxylist.txt | sed '/^$/d' > cleaned.txt
+          mv cleaned.txt proxylist.txt
+
+      - name: Commit & push updated proxies
+        run: |
+          git config user.name "diostronics-bot"
+          git config user.email "actions@github.com"
+
+          git add proxylist.txt
+          git commit -m "🔄 Daily proxy update ($(date -u))" || echo "No changes"
+          git push origin ${{ matrix.branch }}
